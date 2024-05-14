@@ -9,5 +9,6 @@ export const payRoutes = Router()
     .get('/withdraw',PayController.allwithdraw)
     .post('/withdraw',PayController.withdraw)
     .post('/mywithrdraw',PayController.mywithdraw)
+    .patch('/mywithrdraw',PayController.mywithdrawsucces)
 
     
