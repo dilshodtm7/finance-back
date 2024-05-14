@@ -54,6 +54,11 @@ export class PayModel {
             return data
         }
 
+     async mywithdrawsucces(id,userid,status){
+            const data = await this.#db.fetch(`UPDATE withdrawal SET status = $1 WHERE id = $2 AND userid = $3 RETURNING id`,status,id,userid)
+            return data
+        }
+
 
 
 
