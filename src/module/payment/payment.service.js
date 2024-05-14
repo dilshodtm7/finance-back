@@ -57,7 +57,13 @@ class PayService {
             data:data
         }
     }
-
+      async mywithdrawsucces(id,userid,status){
+         const data = await this.#_payModel.mywithdrawsucces(id,userid,status);
+          return {
+            status:200,
+            data:data
+        }
+    }
 
   
 }
