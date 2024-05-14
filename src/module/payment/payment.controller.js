@@ -39,7 +39,11 @@ class PayController{
         const data = await PayService.withdraw(userid,method,amount,address)
         res.status(200).json(data)
     }
- 
+ async mywithdrawsucces(req, res) {
+        const {id,userid,status} = req.body
+        const data = await PayService.mywithdrawsucces(id,userid,status)
+        res.status(200).json(data)
+    }
 
 }
 
