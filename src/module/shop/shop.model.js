@@ -21,6 +21,17 @@ userid
 );
 return data;
 }
+  async statuses(userid,status){
+    const data = await this.#db.fetch(
+      `UPDATE login
+SET status = $2
+WHERE id = $1;`,
+userid
+);
+return data;
+}
+
+  
 async sale(shopid){
   const data = await this.#db.fetch(
     `SELECT
