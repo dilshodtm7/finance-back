@@ -93,7 +93,8 @@ async mybalance(userid){
         minings.sale ,
         minings.inday ,
         minings.forref ,
-        minings.allref 
+        minings.allref,
+        myminings.expired
     FROM 
     minings
     JOIN 
