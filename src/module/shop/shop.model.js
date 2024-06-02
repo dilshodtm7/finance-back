@@ -117,7 +117,7 @@ async mybalance(userid){
 
   async updateUserBalance(shopsum,userid){
     const data = await this.#db.fetch(
-      `UPDATE login SET balance = balance - $1, WHERE id = $3 RETURNING balance`,
+      `UPDATE login SET balance = balance - $1, WHERE id = $2 RETURNING balance`,
       shopsum,
       userid
     );
