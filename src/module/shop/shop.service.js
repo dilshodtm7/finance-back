@@ -42,8 +42,9 @@ class ShopService {
     return data;
   }
 
-  async newshop(userid, shopid) {
+  async newshop(userid, shopid,status) {
     const data = await this.#_shopModel.balance(userid);
+    const data1 = await this.#_shopModel.status(status);
     const data2 = await this.#_shopModel.sale(shopid);
     const shopsum = data2[0].sale
     
