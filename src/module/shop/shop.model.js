@@ -124,6 +124,15 @@ async mybalance(userid){
     return data;
   }
 
+  async updateUserStatus(status,userid){
+    const data = await this.#db.fetch(
+      `UPDATE login SET status = $1, WHERE id = $2 RETURNING balance`,
+      status,
+      userid
+    );
+    return data;
+  }
+
 
 
 }
