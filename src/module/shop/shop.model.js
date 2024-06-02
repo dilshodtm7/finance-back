@@ -46,6 +46,7 @@ async mybalance(userid){
     const data = await this.#db.fetch(
       `SELECT 
       minings.id,
+      minings.expired,
       minings.names,
       minings.sale,
       minings.inday,
