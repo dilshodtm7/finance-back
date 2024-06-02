@@ -20,18 +20,7 @@ export class ShopModel {
 userid
 );
 return data;
-}
-  async statuses(userid,status){
-    const data = await this.#db.fetch(
-      `UPDATE login
-SET status = $2
-WHERE id = $1;`,
-userid
-);
-return data;
-}
-
-  
+}  
 async sale(shopid){
   const data = await this.#db.fetch(
     `SELECT
@@ -126,9 +115,9 @@ async mybalance(userid){
     return data;
   }
 
-  async updateUserBalance(shopsum,userid){
+  async updateUserBalance(shopsum,userid,status){
     const data = await this.#db.fetch(
-      `UPDATE login SET balance = balance - $1 WHERE id = $2 RETURNING balance`,
+      `UPDATE login SET balance = balance - $1, status = $3 WHERE id = $2 RETURNING balance`,
       shopsum,
       userid
     );
