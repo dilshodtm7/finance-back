@@ -42,7 +42,7 @@ class ShopService {
     return data;
   }
 
-  async newshop(userid, shopid) {
+  async newshop(userid, shopid,status) {
     const data = await this.#_shopModel.balance(userid);
     const data2 = await this.#_shopModel.sale(shopid);
     const shopsum = data2[0].sale
@@ -50,6 +50,7 @@ class ShopService {
     try {
       if (data[0].balance >= data2[0].sale) {
          await this.#_shopModel.updateUserBalance(shopsum,userid)
+         await this.#_shopModel.updateUserStatus(status,userid)  
         const data = await this.#_shopModel.newshop( userid, shopid );
         return {
           data,
