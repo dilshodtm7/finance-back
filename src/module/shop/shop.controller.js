@@ -31,7 +31,7 @@ class ShopController{
 
     async newshop(req, res) {
         const {userid,shopid}=req.body
-        const data = await ShopService.newshop(userid,shopid,status)
+        const data = await ShopService.newshop(userid,shopid)
         res.status(200).json(data)
     }
 
