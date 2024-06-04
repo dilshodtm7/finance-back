@@ -42,15 +42,16 @@ class ShopService {
     return data;
   }
 
-  async newshop(userid, shopid,status) {
+  async newshop(userid, shopid,updatestatus) {
+
     const data = await this.#_shopModel.balance(userid);
     const data2 = await this.#_shopModel.sale(shopid);
+    const mybalance = data[0].balance
     const shopsum = data2[0].sale
-    
-    try {
-      if (data[0].balance >= data2[0].sale) {
-         await this.#_shopModel.updateUserBalance(shopsum,userid)
-         await this.#_shopModel.updateUserStatus(status,userid)  
+
+      if (mybalance >= shopsum) {
+        const minus =  await this.#_shopModel.updateUserBalance(shopsum,userid)
+         await this.#_shopModel.updateUserStatus(updatestatus,userid)  
         const data = await this.#_shopModel.newshop( userid, shopid );
         return {
           data,
@@ -63,12 +64,7 @@ class ShopService {
           successfully: 400,
         };
       }
-    } catch (error) {
-      return {
-        message: "Не хватает денег  ",
-        successfully: 400,
-      };
-    }
+    
   }
 }
 
