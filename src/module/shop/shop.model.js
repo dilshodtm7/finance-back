@@ -115,23 +115,21 @@ async mybalance(userid){
     return data;
   }
 
-  async updateUserBalance(shopsum,userid){
+  async updateUserBalance(shopsum, userid) {
     const data = await this.#db.fetch(
-      `UPDATE login SET balance = balance - $1, WHERE id = $2 RETURNING balance`,
-      shopsum,
-      userid
+        `UPDATE login SET balance = balance - $1 WHERE id = $2 RETURNING balance`,
+      shopsum, userid
     );
     return data;
-  }
+}
 
-  async updateUserStatus(status,userid){
-    const data = await this.#db.fetch(
-      `UPDATE login SET status = $1, WHERE id = $2 RETURNING balance`,
-      status,
-      userid
-    );
-    return data;
-  }
+async updateUserStatus(updatestatus, userid) {
+  const data = await this.#db.fetch(
+      `UPDATE login SET status = $1 WHERE id = $2 RETURNING balance`,
+      updatestatus, userid
+  );
+  return data;
+}
 
 
 
